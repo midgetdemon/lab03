@@ -33,4 +33,18 @@ TEST(AddTest, AddEvaluateOpsNegNeg){
 	EXPECT_EQ(test->evaluate(), -6);
 }
 
+TEST(AddTest, AddStringOpsPosPos){
+	Op* one = new Op(4);
+	Op* two = new Op(7);
+	Add* test = new Add(one, two);
+	EXPECT_EQ(test->stringify(), "(4.000000+7.000000)");
+}
+
+TEST(AddTest, AddStringOpsNegPos){
+	Op* one = new Op(-5);
+	Op* two = new Op(3);
+	Add* test = new Add(one, two);
+	EXPECT_EQ(test->stringify(), "(-5.000000+3.000000)");
+}
+
 #endif
