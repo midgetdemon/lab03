@@ -1,4 +1,7 @@
+#ifndef __ZERO_OP_MOCK_HPP__
+#define __ZERO_OP_MOCK_HPP__
 
+#include "base.hpp"
 
 class ZeroOpMock : public Base {
 	public:
@@ -6,4 +9,6 @@ class ZeroOpMock : public Base {
 		
 		virtual double evaluate() { return 0.0; }
 		virtual string stringify() { return "0.0"; }
-}
+};
+
+#endif
