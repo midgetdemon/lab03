@@ -4,6 +4,7 @@
 #include "gtest/gtest.h"
 #include "sub.hpp"
 #include "op.hpp"
+#include "div.hpp"
 
 TEST(SubTest, SubEvaluateOpsPosPos){
 	Op* one = new Op(4);
@@ -31,6 +32,15 @@ TEST(SubTest, SubEvaluateOpsNegNeg){
 	Op* two = new Op(-2);
 	Sub* test = new Sub(one, two);
 	EXPECT_EQ(test->evaluate(), -2);
+}
+
+TEST(SubTest, SubEvaluateDiv){
+	Op* divone = new Op(6);
+	Op* divtwo = new Op(2);
+	Div* one = new Div(divone, divtwo);
+	Op* two = new Op(7);
+	Sub* test = new Sub(one, two);
+	EXPECT_EQ(test->evaluate(), -4);
 }
 
 TEST(SubTest, SubStringOpsPosPos){

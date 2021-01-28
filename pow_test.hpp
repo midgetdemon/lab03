@@ -45,4 +45,11 @@ TEST(PowTest, PowRand){
 	EXPECT_EQ(test->evaluate(), multiply->evaluate());
 	EXPECT_EQ(test->stringify(), "(" + num->stringify() + "**2.000000)");
 }
+
+TEST(PowTest, PowZero){
+	Op* one = new Op(0);
+	Op* two = new Op(0);
+	Pow* test = new Pow(one ,two);
+	EXPECT_EQ(test->evaluate(), 1);
+}
 #endif

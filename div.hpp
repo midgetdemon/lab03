@@ -2,6 +2,7 @@
 #define __DIV_HPP__
 
 #include "base.hpp"
+#include <stdexcept>
 
 class Div : public Base {
 	private:
@@ -11,6 +12,9 @@ class Div : public Base {
 		Div(Base* leftNode, Base* rightNode) : Base(){
 			left = leftNode;
 			right = rightNode;
+			if(right->evaluate() < 0.000001){
+				throw std::invalid_argument("Divide by zero");
+			}
 		}
 		double evaluate(){
 			return left->evaluate()/right->evaluate();

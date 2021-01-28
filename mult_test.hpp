@@ -4,6 +4,7 @@
 #include "gtest/gtest.h"
 #include "mult.hpp"
 #include "op.hpp"
+#include "sub.hpp"
 
 TEST(MultTest, MultEvaluateOpsPosPos){
 	Op* one = new Op(2);
@@ -31,6 +32,15 @@ TEST(MultTest, MultEvaluateOpsNegNeg){
 	Op* two = new Op(-5);
 	Mult* test = new Mult(one, two);
 	EXPECT_EQ(test->evaluate(), 10);
+}
+
+TEST(MultTest, MultEvaluateSub){
+	Op* one = new Op(4);
+	Op* subone = new Op(5);
+	Op* subtwo = new Op(8);
+	Sub* two = new Sub(subone, subtwo);
+	Mult* test = new Mult(one, two);
+	EXPECT_EQ(test->evaluate(), -12);
 }
 
 TEST(MultTest, MultStringOpsPosPos){

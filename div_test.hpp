@@ -5,6 +5,7 @@
 #include "div.hpp"
 #include "op.hpp"
 #include "rand.hpp"
+#include "add.hpp"
 
 TEST(DivTest, DivPos){
 	Op * first = new Op (6);
@@ -37,6 +38,19 @@ TEST(DivTest, DivEvaluateRand){
 	EXPECT_EQ(test->stringify(), "(" + first->stringify() + "/" + first->stringify() + ")"); 
 }
 
+TEST(DivTest, DivDivideZero1){
+	Op* one = new Op(5);
+	Op* two = new Op(0);
+	EXPECT_THROW(Div(one, two), std::invalid_argument);
+}
+
+TEST(DivTest, DivDivideZero2){
+	Op* one = new Op(3);
+	Op* addone = new Op(3);
+	Op* addtwo = new Op(-3);
+	Add* two = new Add(addone, addtwo);
+	EXPECT_THROW(Div(one, two), std::invalid_argument);
+}
 
 #endif 
 

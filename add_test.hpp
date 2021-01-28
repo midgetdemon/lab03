@@ -4,6 +4,7 @@
 #include "gtest/gtest.h"
 #include "add.hpp"
 #include "op.hpp"
+#include "mult.hpp"
 
 TEST(AddTest, AddEvaluateOpsPosPos){
 	Op* one = new Op(4);
@@ -31,6 +32,15 @@ TEST(AddTest, AddEvaluateOpsNegNeg){
 	Op* two = new Op(-2);
 	Add* test = new Add(one, two);
 	EXPECT_EQ(test->evaluate(), -6);
+}
+
+TEST(AddTest, AddEvaluateMult){
+	Op* one = new Op(-3);
+	Op* multone = new Op(2);
+	Op* multtwo = new Op(-3);
+	Mult* two = new Mult(multone, multtwo);
+	Add* test = new Add(one, two);
+	EXPECT_EQ(test->evaluate(), -9);
 }
 
 TEST(AddTest, AddStringOpsPosPos){
